@@ -1,0 +1,30 @@
+{
+    "name": "boopjs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/types.js",
+    "bin": {
+        "boopjs": "dist/cli.js"
+    },
+    "scripts": {
+        "build": "tsc"
+    },
+    "files": [
+        "scripts",
+        "dist"
+    ],
+    "author": "Theo Paris",
+    "license": "MIT",
+    "dependencies": {
+        "@types/mmmagic": "^0.4.29",
+        "@types/node": "^14.0.27",
+        "commander": "^6.0.0",
+        "file-type": "^14.6.2",
+        "mmmagic": "^0.5.3",
+        "prettier": "^2.0.5",
+        "vm2": "^3.9.2"
+    },
+    "devDependencies": {
+        "typescript": "^3.9.7"
+    }
+}
