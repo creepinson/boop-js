@@ -22,20 +22,8 @@ module.exports = [
                     filepath: "./test." + state.args[0],
                 });
             } catch (e) {
-                state.text = e.message;
+                state.error = e.message;
             }
         },
     },
 ];
-
-/**
-	{
-		"api":1,
-		"name":"Format CSS",
-		"description":"Cleans and format CSS stylesheets.",
-		"author":"Ivan",
-		"icon":"broom",
-		"tags":"css,prettify,clean,indent",
-        "bias": -0.1
-	}
-**/

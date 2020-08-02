@@ -11,6 +11,7 @@ export class Action {
 export class State {
     text: string;
     selection: string;
+    error?: string;
     args: any[];
     debug: boolean;
 }

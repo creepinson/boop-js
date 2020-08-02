@@ -37,7 +37,8 @@ async function main(data: string) {
                 if (arg === a.name || arg === a.id) {
                     if (state.debug) console.log(`Running script: ${a.name}`);
                     await a.main(state);
-                    console.log(state.text);
+                    if (state.error) console.error(state.error);
+                    else console.log(state.text);
                 }
             });
 
@@ -53,7 +54,8 @@ async function main(data: string) {
                             if (state.debug)
                                 console.log(`Running script: ${b.name}`);
                             await b.main(state);
-                            console.log(state.text);
+                            if (state.error) console.error(state.error);
+                            else console.log(state.text);
                         }
                     });
                 },

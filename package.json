@@ -1,8 +1,8 @@
 {
-    "name": "boopjs",
+    "name": "boop-js",
     "version": "1.0.0",
     "description": "",
-    "main": "dist/types.js",
+    "main": "dist/index.js",
     "bin": {
         "boopjs": "dist/cli.js"
     },

@@ -1,7 +1,7 @@
 const { Action } = require("../dist/types");
 
 const hexToRgb = (hex) =>
-    new RegExp("([a-f\\d]{2})([a-f\\d]{2})([a-f\\d]{2})")
+    new RegExp("([a-f\\d]{2})([a-f\\d]{2})?([a-f\\d]{2})?")
         .exec(hex)
         .map((x) => parseInt(x, 16))
         .filter((v) => v <= 255 && v >= 0);
@@ -21,7 +21,7 @@ const rgbToHex = (rgb) =>
 module.exports = [
     {
         id: "h2r",
-        name: "hextorgb",
+        name: "hex-to-rgb",
         description: "Convert color in hexadecimal to RGB.",
         author: "Theo Paris",
         icon: "table",
@@ -30,7 +30,7 @@ module.exports = [
             try {
                 state.text = hexToRgb(state.text).join(",");
             } catch {
-                state.text = "Invalid hex string.";
+                state.error = "Invalid hex string.";
             }
         },
     },
@@ -45,7 +45,7 @@ module.exports = [
             try {
                 state.text = "#" + rgbToHex(state.text);
             } catch {
-                state.text = "Invalid RGB string.";
+                state.error = "Invalid RGB string.";
             }
         },
     },
