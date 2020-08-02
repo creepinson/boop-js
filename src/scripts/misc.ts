@@ -1,6 +1,6 @@
-const { Action } = require("../dist/types");
+import { State } from "../types";
 
-function queryToJson(urlParams) {
+function queryToJson(urlParams: string) {
     return urlParams
         .replace(/\[\d?\]=/gi, "=")
         .split("&")
@@ -20,10 +20,7 @@ function queryToJson(urlParams) {
         }, {});
 }
 
-/**
- * @type {Action[]}
- */
-module.exports = [
+export default [
     {
         name: "downcase",
         id: "downcase",
@@ -31,7 +28,7 @@ module.exports = [
         description: "Converts text to lowercase.",
         icon: "type",
         tags: ["join", "space"],
-        main: async (state) => {
+        main: async (state: State) => {
             let words = state.text.trim().match(/\S+/g);
             state.text = `${(words && words.length) || 0} words`;
         },
@@ -43,7 +40,7 @@ module.exports = [
         description: "Outputs the amount of lines.",
         icon: "counter",
         tags: ["count", "length", "size", "line"],
-        main: async (state) => {
+        main: async (state: State) => {
             state.text = `${state.text.split("\n").length}`;
         },
     },
@@ -54,7 +51,7 @@ module.exports = [
         description: "Outputs the amount of characters.",
         icon: "counter",
         tags: ["count", "length", "size", "line"],
-        main: async (state) => {
+        main: async (state: State) => {
             state.text = `${state.text.length}`;
         },
     },
@@ -65,7 +62,7 @@ module.exports = [
         description: "Removes all line breaks from your text",
         icon: "collapse",
         tags: ["strip", "remove", "collapse", "join"],
-        main: async (state) => {
+        main: async (state: State) => {
             let split = state.text.split(/\r\n|\r|\n/);
             state.text = split.join();
         },
@@ -77,7 +74,7 @@ module.exports = [
         description: "",
         icon: "table",
         tags: ["sort"],
-        main: async (state) => {
+        main: async (state: State) => {
             let sorted = state.text
                 .replace(/\n$/, "")
                 .split("\n")
@@ -102,7 +99,7 @@ module.exports = [
         description: "",
         icon: "table",
         tags: ["sort"],
-        main: async (state) => {
+        main: async (state: State) => {
             try {
                 state.text = JSON.stringify(queryToJson(state.text));
             } catch (error) {
@@ -117,9 +114,9 @@ module.exports = [
         description: "Ensures each line of your text is unique",
         icon: "table",
         tags: ["remove", "duplicate"],
-        main: async (state) => {
+        main: async (state: State) => {
             let lines = state.text.split("\n");
-            let out = [...new Set(array)];
+            let out = [...new Set(lines)];
 
             state.text = out.join("\n");
 

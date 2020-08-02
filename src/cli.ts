@@ -3,7 +3,7 @@ import * as fs from "fs";
 import { Magic } from "mmmagic";
 import * as FileType from "file-type";
 import { State } from "./types";
-import { getActions } from "./parser";
+import { getActions, getBuiltInActions } from "./parser";
 import { homedir } from "os";
 
 try {
@@ -31,35 +31,31 @@ async function main(data: string) {
         debug: args.includes("-d") || args.includes("--debug"),
     };
 
-    getActions(`${homedir()}/.boop/boop-scripts`, state.debug).then(
-        (actions) => {
-            actions.forEach(async (a) => {
-                if (arg === a.name || arg === a.id) {
-                    if (state.debug) console.log(`Running script: ${a.name}`);
-                    await a.main(state);
+    const scriptsPath = `${homedir()}/.config/boop/scripts`;
+    if (!fs.existsSync(scriptsPath)) fs.mkdirSync(scriptsPath);
+
+    getActions(scriptsPath, state.debug).then((actions) => {
+        actions.forEach(async (a) => {
+            if (arg === a.name || arg === a.id) {
+                if (state.debug) console.log(`Running script: ${a.name}`);
+                await a.main(state);
+                if (state.error) console.error(state.error);
+                else console.log(state.text);
+            }
+        });
+
+        getBuiltInActions(state.debug).then((builtIn) => {
+            builtIn.forEach(async (b) => {
+                if (
+                    !actions.some((v) => v.id === b.id || v.name === b.name) &&
+                    (arg === b.name || arg === b.id)
+                ) {
+                    if (state.debug) console.log(`Running script: ${b.name}`);
+                    await b.main(state);
                     if (state.error) console.error(state.error);
                     else console.log(state.text);
                 }
             });
-
-            getActions(`${__dirname}/../scripts`, state.debug).then(
-                (builtIn) => {
-                    builtIn.forEach(async (b) => {
-                        if (
-                            !actions.some(
-                                (v) => v.id === b.id || v.name === b.name,
-                            ) &&
-                            (arg === b.name || arg === b.id)
-                        ) {
-                            if (state.debug)
-                                console.log(`Running script: ${b.name}`);
-                            await b.main(state);
-                            if (state.error) console.error(state.error);
-                            else console.log(state.text);
-                        }
-                    });
-                },
-            );
-        },
-    );
+        });
+    });
 }

@@ -1,12 +1,12 @@
-const { Action } = require("../dist/types");
+import { State } from "../types";
 
-const hexToRgb = (hex) =>
+const hexToRgb = (hex: string) =>
     new RegExp("([a-f\\d]{2})([a-f\\d]{2})?([a-f\\d]{2})?")
         .exec(hex)
         .map((x) => parseInt(x, 16))
         .filter((v) => v <= 255 && v >= 0);
 
-const rgbToHex = (rgb) =>
+const rgbToHex = (rgb: string) =>
     rgb
         .replace(" ", "")
         .replace("(", "")
@@ -18,7 +18,7 @@ const rgbToHex = (rgb) =>
 /**
  * @type {Action[]}
  */
-module.exports = [
+export default [
     {
         id: "h2r",
         name: "hex-to-rgb",
@@ -26,7 +26,7 @@ module.exports = [
         author: "Theo Paris",
         icon: "table",
         tags: ["flip", "color"],
-        main: async (state) => {
+        main: async (state: State) => {
             try {
                 state.text = hexToRgb(state.text).join(",");
             } catch {
@@ -41,7 +41,7 @@ module.exports = [
         author: "Theo Paris",
         icon: "table",
         tags: ["flip", "color"],
-        main: async (state) => {
+        main: async (state: State) => {
             try {
                 state.text = "#" + rgbToHex(state.text);
             } catch {

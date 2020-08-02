@@ -1,9 +1,9 @@
-const { Action } = require("../dist/types");
+import { State } from "../types";
 
 /**
  * @type {Action[]}
  */
-module.exports = [
+export default [
     {
         name: "join-lines-with-space",
         id: "joinlnws",
@@ -11,8 +11,8 @@ module.exports = [
         description: "Joins all lines with a space.",
         icon: "table",
         tags: ["join", "space"],
-        main: async (state) => {
-            state.text = input.text.replace("\n", " ");
+        main: async (state: State) => {
+            state.text = state.text.replace("\n", " ");
         },
     },
     {
@@ -22,8 +22,8 @@ module.exports = [
         description: "Joins all lines with a comma.",
         icon: "table",
         tags: ["join", "comma"],
-        main: async (state) => {
-            state.text = input.text.replace("\n", ",");
+        main: async (state: State) => {
+            state.text = state.text.replace("\n", ",");
         },
     },
     {
@@ -33,8 +33,8 @@ module.exports = [
         description: "Joins all lines without a delimiter.",
         icon: "table",
         tags: ["join", "comma"],
-        main: async (state) => {
-            state.text = input.text.replace("\n", "");
+        main: async (state: State) => {
+            state.text = state.text.replace("\n", "");
         },
     },
 ];

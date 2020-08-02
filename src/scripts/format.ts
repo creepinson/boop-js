@@ -1,10 +1,10 @@
-const { Action } = require("../dist/types");
+import { State } from "../types";
 const prettier = require("prettier");
 
 /**
  * @type {Action[]}
  */
-module.exports = [
+export default [
     {
         name: "format",
         id: "fmt",
@@ -12,7 +12,7 @@ module.exports = [
         description: "Formats the input code.",
         icon: "broom",
         tags: ["prettify", "clean", "indent"],
-        main: async (state) => {
+        main: async (state: State) => {
             try {
                 state.text = prettier.format(state.text, {
                     endOfLine: "auto",

@@ -1,9 +1,9 @@
-const { Action } = require("../dist/types");
+import { State } from "../types";
 
 /**
  * @type {Action[]}
  */
-module.exports = [
+export default [
     {
         name: "join-lines-with-space",
         id: "joinlws",
@@ -11,8 +11,8 @@ module.exports = [
         description: "Joins all lines with a space.",
         icon: "table",
         tags: ["join", "space"],
-        main: async (state) => {
-            const script = satte.text.replace(/\n\n\/\/ Result:[\s\S]*$/, "");
+        main: async (state: State) => {
+            const script = state.text.replace(/\n\n\/\/ Result:[\s\S]*$/, "");
 
             let output = "";
             try {
