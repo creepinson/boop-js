@@ -21,6 +21,7 @@ export async function getActions(scriptsDir: string, debug: boolean) {
                         builtin: ["*"],
                         root: "./",
                         mock: {},
+                        context: "host",
                     },
                 }).runFile(path);
 
@@ -56,6 +57,7 @@ export async function getBuiltInActions(debug: boolean) {
                         builtin: ["*"],
                         root: "./",
                         mock: {},
+                        context: "host",
                     },
                 }).runFile(path).default;
 
