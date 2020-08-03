@@ -8,7 +8,7 @@
     },
     "scripts": {
         "build": "tsc",
-        "prepare": "pnpm run build",
+        "prepare": "pnpm run build"
     },
     "files": [
         "scripts",
