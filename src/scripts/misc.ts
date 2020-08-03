@@ -27,10 +27,20 @@ export default [
         author: "Theo Paris",
         description: "Converts text to lowercase.",
         icon: "type",
-        tags: ["join", "space"],
+        tags: ["lowercase"],
         main: async (state: State) => {
-            let words = state.text.trim().match(/\S+/g);
-            state.text = `${(words && words.length) || 0} words`;
+            state.text = state.text.toLowerCase();
+        },
+    },
+    {
+        name: "upcase",
+        id: "upcase",
+        author: "Theo Paris",
+        description: "Converts text to uppercase.",
+        icon: "type",
+        tags: ["uppercase", "capitalize"],
+        main: async (state: State) => {
+            state.text = state.text.toUpperCase();
         },
     },
     {
@@ -122,6 +132,49 @@ export default [
 
             if (state.debug)
                 state.text += `${lines.length - out.length} lines removed`;
+        },
+    },
+    {
+        name: "remove-slashes",
+        description: "Unescapes your text",
+        author: "Theo Paris",
+        icon: "quote",
+        tags: ["strip", "slashes", "remove", "unescape"],
+        main: (state: State) => {
+            state.text = (state.text + "").replace(/\\(.?)/g, (_, n1) => {
+                switch (n1) {
+                    case "\\":
+                        return "\\";
+                    case "0":
+                        return "\u0000";
+                    case "":
+                        return "";
+                    default:
+                        return n1;
+                }
+            });
+        },
+    },
+    {
+        name: "reverse-lines",
+        id: "rvs-lines",
+        description: "Flips every line of your text",
+        author: "Theo Paris",
+        icon: "flip",
+        tags: ["reverse", "order", "invert", "mirror", "flip"],
+        main: (state: State) => {
+            state.text = state.text.split("\n").reverse().join("\n");
+        },
+    },
+    {
+        name: "trim",
+        id: "trim",
+        description: "Trims trailing whitespace",
+        author: "Theo Paris",
+        icon: "trim",
+        tags: ["trim", "whitespace", "empty", "space"],
+        main: (state: State) => {
+            state.text = state.text.trim();
         },
     },
 ];

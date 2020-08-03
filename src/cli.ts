@@ -13,8 +13,9 @@ try {
 }
 
 async function main(data: string) {
-    // const magic = new Magic();
-    // Command has received input, continue to step 2
+    const scriptsPath = `${homedir()}/.config/boop/scripts`;
+    if (!fs.existsSync(scriptsPath)) fs.mkdirSync(scriptsPath);
+
     const args = process.argv.slice(2);
     if (!args[0]) {
         console.error("Missing arguments.");
@@ -31,31 +32,46 @@ async function main(data: string) {
         debug: args.includes("-d") || args.includes("--debug"),
     };
 
-    const scriptsPath = `${homedir()}/.config/boop/scripts`;
-    if (!fs.existsSync(scriptsPath)) fs.mkdirSync(scriptsPath);
+    if (args[0] === "--list" || args[0] === "-l") {
+        console.log(`List of possible actions: `);
+        const act = [];
+        getActions(scriptsPath, state.debug).then((actions) => {
+            actions.forEach(async (a) => act.push(a.id));
 
-    getActions(scriptsPath, state.debug).then((actions) => {
-        actions.forEach(async (a) => {
-            if (arg === a.name || arg === a.id) {
-                if (state.debug) console.log(`Running script: ${a.name}`);
-                await a.main(state);
-                if (state.error) console.error(state.error);
-                else console.log(state.text);
-            }
+            getBuiltInActions(state.debug).then((builtIn) => {
+                builtIn.forEach(async (b) => {
+                    if (!act.includes(b.id)) act.push(b.id);
+                });
+                console.log(act.join(", "));
+            });
         });
-
-        getBuiltInActions(state.debug).then((builtIn) => {
-            builtIn.forEach(async (b) => {
-                if (
-                    !actions.some((v) => v.id === b.id || v.name === b.name) &&
-                    (arg === b.name || arg === b.id)
-                ) {
-                    if (state.debug) console.log(`Running script: ${b.name}`);
-                    await b.main(state);
+    } else {
+        getActions(scriptsPath, state.debug).then((actions) => {
+            actions.forEach(async (a) => {
+                if (arg === a.name || arg === a.id) {
+                    if (state.debug) console.log(`Running script: ${a.name}`);
+                    await a.main(state);
                     if (state.error) console.error(state.error);
                     else console.log(state.text);
                 }
             });
+
+            getBuiltInActions(state.debug).then((builtIn) => {
+                builtIn.forEach(async (b) => {
+                    if (
+                        !actions.some(
+                            (v) => v.id === b.id || v.name === b.name,
+                        ) &&
+                        (arg === b.name || arg === b.id)
+                    ) {
+                        if (state.debug)
+                            console.log(`Running script: ${b.name}`);
+                        await b.main(state);
+                        if (state.error) console.error(state.error);
+                        else console.log(state.text);
+                    }
+                });
+            });
         });
-    });
+    }
 }
