@@ -7,8 +7,6 @@ export async function getActions(scriptsDir: string, debug: boolean) {
 	const actions: Action[] = [];
 
 	try {
-		if (!fs.access(scriptsDir))
-			throw new Error(`Could not access folder: ${scriptsDir}`);
 		const files = await fs.readdir(scriptsDir);
 
 		for (let file of files) {
@@ -45,8 +43,6 @@ export async function getBuiltInActions(debug: boolean) {
 	const scriptsDir = `${__dirname}/scripts`;
 
 	try {
-		if (!fs.access(scriptsDir))
-			throw new Error(`Could not access folder: ${scriptsDir}`);
 		const files = await fs.readdir(scriptsDir);
 		for (let file of files) {
 			if (file.includes(".js")) {
@@ -70,6 +66,7 @@ export async function getBuiltInActions(debug: boolean) {
 			}
 		}
 	} catch (e) {
+		console.log("An error occurred while parsing scripts.");
 		if (debug) console.error(e.toString());
 		return [];
 	}
