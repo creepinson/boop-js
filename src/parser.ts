@@ -19,7 +19,6 @@ export async function getActions(scriptsDir: string, debug: boolean) {
 					require: {
 						external: true,
 						builtin: ["*"],
-						root: "./",
 						mock: {},
 						context: "host",
 					},
@@ -54,7 +53,6 @@ export async function getBuiltInActions(debug: boolean) {
 					require: {
 						external: true,
 						builtin: ["*"],
-						root: "./",
 						mock: {},
 						context: "host",
 					},

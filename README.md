@@ -13,6 +13,10 @@ Boop comes with a bunch of built-in actions. However, since it is work in progre
 -   Eval: evaluate javascript code
     -   ID: eval
 
+## Installation
+At the moment the best way to install boop is to install it with your preferred node package manager like so:  
+`pnpm i git+https://github.com/creepinson/boop-js -g`
+
 ## To Do
 
 - Vscode extension
