@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 import * as fs from "fs";
-import { Magic } from "mmmagic";
-import * as FileType from "file-type";
 import { State } from "./types";
 import { getActions, getBuiltInActions } from "./parser";
 import { homedir } from "os";

@@ -1,29 +1,11 @@
 dependencies:
-  '@types/mmmagic': 0.4.29
   '@types/node': 14.0.27
   commander: 6.0.0
-  file-type: 14.6.2
-  mmmagic: 0.5.3
   prettier: 2.0.5
-  vm2: 3.9.2
-devDependencies:
   typescript: 3.9.7
+  vm2: 3.9.2
 lockfileVersion: 5.1
 packages:
-  /@tokenizer/token/0.1.1:
-    dev: false
-    resolution:
-      integrity: sha512-XO6INPbZCxdprl+9qa/AAbFFOMzzwqYxpjPgLICrMD6C2FCw6qfJOPcBk6JqqPLSaZ/Qx87qn4rpPmPMwaAK6w==
-  /@types/debug/4.1.5:
-    dev: false
-    resolution:
-      integrity: sha512-Q1y515GcOdTHgagaVFhHnIFQ38ygs/kmxdNpvpou+raI9UO3YZcHDngBSYKQklcKlvA7iuQlmIKbzvmxcOE9CQ==
-  /@types/mmmagic/0.4.29:
-    dependencies:
-      '@types/node': 14.0.27
-    dev: false
-    resolution:
-      integrity: sha1-0zu6O8xZYjP79zdHk1tN/mhm8ic=
   /@types/node/14.0.27:
     dev: false
     resolution:
@@ -34,44 +16,6 @@ packages:
       node: '>= 6'
     resolution:
       integrity: sha512-s7EA+hDtTYNhuXkTlhqew4txMZVdszBmKWSPEMxGr8ru8JXR7bLUFIAtPhcSuFdJQ0ILMxnJi8GkQL0yvDy/YA==
-  /file-type/14.6.2:
-    dependencies:
-      readable-web-to-node-stream: 2.0.0
-      strtok3: 6.0.4
-      token-types: 2.0.0
-      typedarray-to-buffer: 3.1.5
-    dev: false
-    engines:
-      node: '>=8'
-    resolution:
-      integrity: sha512-kSZTAJxPXBdBgJyoC7TexkBWoMI/D1Gas6aTtAn9VIRFwCehwiluGV5O8O2GwqO5zIqeEvXxEKl/xfcaAKB0Yg==
-  /ieee754/1.1.13:
-    dev: false
-    resolution:
-      integrity: sha512-4vf7I2LYV/HaWerSo3XmlMkp5eZ83i+/CDluXi/IGTs/O1sejBNhTtnxzmRZfvOUqj7lZjqHkeTvpgSFDlWZTg==
-  /is-typedarray/1.0.0:
-    dev: false
-    resolution:
-      integrity: sha1-5HnICFjfDBsR3dppQPlgEfzaSpo=
-  /mmmagic/0.5.3:
-    dependencies:
-      nan: 2.14.1
-    dev: false
-    engines:
-      node: '>=4.0.0'
-    requiresBuild: true
-    resolution:
-      integrity: sha512-xLqCu7GJYTzJczg0jafXFuh+iPzQL/ru0YYf4GiTTz8Cehru/wiXtUS8Pp8Xi77zNaiVndJ0OO1yAFci6iHyFg==
-  /nan/2.14.1:
-    dev: false
-    resolution:
-      integrity: sha512-isWHgVjnFjh2x2yuJ/tj3JbwoHu3UC2dX5G/88Cm24yB6YopVgxvBObDY7n5xW6ExmFhJpSEQqFPvq9zaXc8Jw==
-  /peek-readable/3.1.0:
-    dev: false
-    engines:
-      node: '>=8'
-    resolution:
-      integrity: sha512-KGuODSTV6hcgdZvDrIDBUkN0utcAVj1LL7FfGbM0viKTtCHmtZcuEJ+lGqsp0fTFkGqesdtemV2yUSMeyy3ddA==
   /prettier/2.0.5:
     dev: false
     engines:
@@ -79,37 +23,8 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-7PtVymN48hGcO4fGjybyBSIWDsLU4H4XlvOHfq91pz9kkGlonzwTfYkaIEwiRg/dAJF9YlbsduBAgtYLi+8cFg==
-  /readable-web-to-node-stream/2.0.0:
-    dev: false
-    resolution:
-      integrity: sha512-+oZJurc4hXpaaqsN68GoZGQAQIA3qr09Or4fqEsargABnbe5Aau8hFn6ISVleT3cpY/0n/8drn7huyyEvTbghA==
-  /strtok3/6.0.4:
-    dependencies:
-      '@tokenizer/token': 0.1.1
-      '@types/debug': 4.1.5
-      peek-readable: 3.1.0
-    dev: false
-    engines:
-      node: '>=8'
-    resolution:
-      integrity: sha512-rqWMKwsbN9APU47bQTMEYTPcwdpKDtmf1jVhHzNW2cL1WqAxaM9iBb9t5P2fj+RV2YsErUWgQzHD5JwV0uCTEQ==
-  /token-types/2.0.0:
-    dependencies:
-      '@tokenizer/token': 0.1.1
-      ieee754: 1.1.13
-    dev: false
-    engines:
-      node: '>=0.1.98'
-    resolution:
-      integrity: sha512-WWvu8sGK8/ZmGusekZJJ5NM6rRVTTDO7/bahz4NGiSDb/XsmdYBn6a1N/bymUHuWYTWeuLUg98wUzvE4jPdCZw==
-  /typedarray-to-buffer/3.1.5:
-    dependencies:
-      is-typedarray: 1.0.0
-    dev: false
-    resolution:
-      integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
   /typescript/3.9.7:
-    dev: true
+    dev: false
     engines:
       node: '>=4.2.0'
     hasBin: true
@@ -123,11 +38,8 @@ packages:
     resolution:
       integrity: sha512-nzyFmHdy2FMg7mYraRytc2jr4QBaUY3TEGe3q3bK8EgS9WC98wxn2jrPxS/ruWm+JGzrEIIeufKweQzVoQEd+Q==
 specifiers:
-  '@types/mmmagic': ^0.4.29
   '@types/node': ^14.0.27
   commander: ^6.0.0
-  file-type: ^14.6.2
-  mmmagic: ^0.5.3
   prettier: ^2.0.5
   typescript: ^3.9.7
   vm2: ^3.9.2
