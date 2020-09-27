@@ -1,27 +1,27 @@
 {
-    "name": "boop-js",
-    "version": "0.0.1",
-    "description": "",
-    "main": "dist/index.js",
-    "bin": {
-        "boopjs": "dist/cli.js"
-    },
-    "scripts": {
-        "build": "tsc",
-        "prepare": "pnpm run build"
-    },
-    "files": [
-        "scripts",
-        "dist"
-    ],
-    "author": "Theo Paris",
-    "license": "MIT",
-    "dependencies": {
-        "@types/node": "^14.0.27",
-        "commander": "^6.0.0",
-        "prettier": "^2.0.5",
-        "vm2": "^3.9.2",
-        "typescript": "^3.9.7"
-    },
-    "devDependencies": {}
+	"name": "boop-js",
+	"version": "0.0.1",
+	"description": "",
+	"main": "dist/index.js",
+	"bin": {
+		"boopjs": "dist/cli.js"
+	},
+	"scripts": {
+		"build": "tsc",
+		"prepublishOnly": "yarn run build"
+	},
+	"files": [
+		"scripts",
+		"dist"
+	],
+	"author": "Theo Paris",
+	"license": "MIT",
+	"dependencies": {
+		"@types/node": "^14.11.2",
+		"commander": "^6.1.0",
+		"prettier": "^2.1.2",
+		"vm2": "^3.9.2",
+		"typescript": "^4.0.3"
+	},
+	"devDependencies": {}
 }
